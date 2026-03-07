@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.consumer.model.Producer;
+import org.example.consumer.model.dto.ProducerDTO;
 
 import java.util.Map;
 
@@ -26,5 +26,5 @@ public class TimeSeriesMessageDTO {
     @NotNull
     @Valid
     @JsonProperty("source_properties")
-    private Producer producer;
+    private ProducerDTO producer;
 }
