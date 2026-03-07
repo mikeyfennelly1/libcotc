@@ -1,0 +1,58 @@
+= libb3project
+
+A Java library providing shared DTOs for the B3 project.
+
+== Requirements
+
+* Java 21+
+* Gradle (wrapper included)
+
+== Building
+
+Build the library JAR:
+
+[source,bash]
+----
+./gradlew :lib:build
+----
+
+Run the tests:
+
+[source,bash]
+----
+./gradlew :lib:test
+----
+
+== Publishing to Local Maven Repository
+
+To install the library into your local Maven repository (`~/.m2/repository`):
+
+[source,bash]
+----
+./gradlew :lib:publishToMavenLocal
+----
+
+Once published, you can depend on it in another Gradle project by adding `mavenLocal()` to your repositories and declaring the dependency:
+
+[source,groovy]
+----
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'libb3project:lib:<version>'
+}
+----
+
+Or in a Maven project:
+
+[source,xml]
+----
+<dependency>
+    <groupId>libb3project</groupId>
+    <artifactId>lib</artifactId>
+    <version><version></version>
+</dependency>
+----
