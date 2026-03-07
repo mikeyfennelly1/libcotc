@@ -1,13 +1,11 @@
-package org.example.consumer.model.dto;
+package org.example.libb3project.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.consumer.model.dto.ProducerDTO;
 
 import java.util.Map;
 
@@ -16,15 +14,16 @@ import java.util.Map;
 @AllArgsConstructor
 public class TimeSeriesMessageDTO {
 
+    @JsonProperty("producer_name")
+    private String producerName;
+
     @JsonProperty("read_time")
     private long readTime;
 
-    @NotEmpty
     @JsonProperty("values")
     private Map<String, Double> values;
 
-    @NotNull
-    @Valid
-    @JsonProperty("source_properties")
-    private ProducerDTO producer;
+    public byte[] getBytes() throws JsonProcessingException {
+        return new ObjectMapper().writeValueAsBytes(this);
+    }
 }

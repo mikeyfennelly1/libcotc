@@ -26,6 +26,7 @@ dependencies {
     api libs.commons.math3
     api libs.jakarta.validation
     api libs.jackson.annotations
+    api libs.jackson.databind
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation libs.guava
