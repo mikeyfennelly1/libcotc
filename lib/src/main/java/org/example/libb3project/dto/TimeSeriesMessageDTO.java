@@ -1,5 +1,6 @@
 package org.example.libb3project.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,6 +24,7 @@ public class TimeSeriesMessageDTO {
     @JsonProperty("values")
     private Map<String, Double> values;
 
+    @JsonIgnore
     public byte[] getBytes() throws JsonProcessingException {
         return new ObjectMapper().writeValueAsBytes(this);
     }
