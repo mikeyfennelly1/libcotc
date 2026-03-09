@@ -4,11 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
 public class StreamDTO {
-    private Long id;
+    private UUID uuid;
     private String name;
     private List<StreamDTO> children;
     private List<SourceDTO> sources;
