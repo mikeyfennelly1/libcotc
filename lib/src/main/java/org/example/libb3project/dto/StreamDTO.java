@@ -12,5 +12,5 @@ public class StreamDTO {
     private UUID uuid;
     private String name;
     private List<StreamDTO> children;
-    private List<SourceDTO> sources;
+    private List<ProducerDTO> producers;
 }
