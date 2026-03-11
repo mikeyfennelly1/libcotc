@@ -1,4 +1,4 @@
-package org.example.libb3project.dto;
+package org.cotc.libcotc.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,9 +8,9 @@ import java.util.UUID;
 
 @Data
 @AllArgsConstructor
-public class StreamDTO {
+public class GroupDTO {
     private UUID uuid;
     private String name;
-    private List<StreamDTO> children;
+    private List<GroupDTO> children;
     private List<ProducerDTO> producers;
 }

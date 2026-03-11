@@ -1,4 +1,4 @@
-package org.example.libb3project.dto;
+package org.cotc.libcotc.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

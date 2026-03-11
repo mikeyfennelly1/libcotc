@@ -1,4 +1,4 @@
-package org.example.libb3project.dto;
+package org.cotc.libcotc.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -9,11 +9,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Map;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class TimeSeriesMessageDTO {
+
+    @JsonProperty("producer_id")
+    private UUID producerId;
 
     @JsonProperty("producer_name")
     private String producerName;

@@ -1,9 +1,10 @@
-package org.example.libb3project.dto;
+package org.cotc.libcotc.dto;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,6 +15,7 @@ class TimeSeriesMessageDTOTest {
     @Test
     void getBytesProducesValidJson() throws Exception {
         TimeSeriesMessageDTO dto = new TimeSeriesMessageDTO(
+                UUID.randomUUID(),
                 "sensor-1",
                 1741305600000L,
                 Map.of("temperature", 22.5, "humidity", 60.0)
@@ -34,6 +36,7 @@ class TimeSeriesMessageDTOTest {
     @Test
     void getBytesUsesSnakeCaseJsonKeys() throws Exception {
         TimeSeriesMessageDTO dto = new TimeSeriesMessageDTO(
+                UUID.randomUUID(),
                 "producer-a",
                 1000L,
                 Map.of("voltage", 3.3)
@@ -47,7 +50,12 @@ class TimeSeriesMessageDTOTest {
 
     @Test
     void getBytesWithEmptyValues() throws Exception {
-        TimeSeriesMessageDTO dto = new TimeSeriesMessageDTO("empty-producer", 0L, Map.of());
+        TimeSeriesMessageDTO dto = new TimeSeriesMessageDTO(
+                UUID.randomUUID(),
+                "empty-producer",
+                0L,
+                Map.of()
+        );
 
         byte[] bytes = dto.getBytes();
         assertNotNull(bytes);
@@ -67,7 +75,12 @@ class TimeSeriesMessageDTOTest {
                 "net_in", 1024.0,
                 "net_out", 512.5
         );
-        TimeSeriesMessageDTO dto = new TimeSeriesMessageDTO("server-1", 9999999L, metrics);
+        TimeSeriesMessageDTO dto = new TimeSeriesMessageDTO(
+                UUID.randomUUID(),
+                "server-1",
+                9999999L,
+                metrics
+        );
 
         byte[] bytes = dto.getBytes();
         TimeSeriesMessageDTO deserialized = mapper.readValue(bytes, TimeSeriesMessageDTO.class);
